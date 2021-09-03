@@ -25,11 +25,15 @@ export const getRandomImage = () => async (dispatch, getState: () => State) => {
       return;
     }
 
-    dispatch({ type: ActionTypes.SET_RANDOM_IMAGE, payload: randomImage });
+    batch(() => {
+      dispatch({ type: ActionTypes.SET_RANDOM_IMAGE, payload: randomImage });
+      dispatch({ type: ActionTypes.IS_LOADING, payload: false });
+    });
   } catch (err) {
-    dispatch({ type: ActionTypes.SET_ERROR, payload: String(err) });
-  } finally {
-    dispatch({ type: ActionTypes.IS_LOADING, payload: false });
+    batch(() => {
+      dispatch({ type: ActionTypes.SET_ERROR, payload: String(err) });
+      dispatch({ type: ActionTypes.IS_LOADING, payload: false });
+    });
   }
 };
 
