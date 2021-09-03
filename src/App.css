@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  margin: 0 auto 25px auto;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 75vw;
+  }
+}
+
+.image-container {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* // TODO: Find a better way! */
+  height: 1px;
+}
